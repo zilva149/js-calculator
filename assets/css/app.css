@@ -4,6 +4,16 @@
 
 /* CSS RESET */
 
+:root {
+  --bg-primary: #dde3e6;
+  --bg-lprimary: #f1f1f1;
+  --bg-secondary: #738b9b;
+  --bg-lsecondary: #a0afb7;
+  --red: #fc6464;
+  --lred: rgb(240, 125, 125);
+  --transition: all ease-out 0.3s;
+}
+
 body,
 body *,
 ::before,
@@ -25,7 +35,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #dde3e6;
+  background-color: var(--bg-primary);
 }
 
 p {
@@ -67,11 +77,73 @@ h6 {
 }
 
 .display-container {
-  min-height: 10rem;
+  min-height: 15rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  background-color: #738b9b;
+  background-color: var(--bg-secondary);
+}
+
+.previous-value-text {
+  font-size: 1.6rem;
+  color: var(--bg-primary);
+}
+
+.current-value-text {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.buttons-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.btn {
+  height: 60px;
+  cursor: pointer;
+  border: solid 1px var(--bg-lprimary);
+  font-size: 1.8rem;
+  color: var(--bg-secondary);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background-color: var(--bg-lsecondary);
+  color: #fff;
+}
+
+.btn:active {
+  transform: translateY(2px);
+}
+
+.btn-operation,
+.btn-dot {
+  font-size: 2.6rem;
+}
+
+.btn-operation,
+.btn-clear,
+.btn-delete {
+  background-color: var(--bg-primary);
+}
+
+.btn-number {
+  background-color: #fff;
+}
+
+.btn-equals {
+  color: #fff;
+  background-color: var(--red);
+}
+
+.btn-equals:hover {
+  background-color: var(--lred);
 }

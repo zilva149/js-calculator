@@ -2,7 +2,7 @@
 
 ## Project information
 
-Site published at: to be determined
+Site published at: https://zilva149.github.io/js-calculator/
 
 Design: https://www.uidesigndaily.com/posts/photoshop-calculator-day-367
 
