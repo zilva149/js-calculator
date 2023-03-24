@@ -147,3 +147,13 @@ h6 {
 .btn-equals:hover {
   background-color: var(--lred);
 }
+
+@media screen and (min-width: 992px) {
+  .previous-value-text {
+    font-size: 2rem;
+  }
+
+  .current-value-text {
+    font-size: 2.8rem;
+  }
+}
