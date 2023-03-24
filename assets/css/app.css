@@ -157,3 +157,9 @@ h6 {
     font-size: 2.8rem;
   }
 }
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 8px;
+  }
+}
