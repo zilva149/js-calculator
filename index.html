@@ -5,8 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Calculator</title>
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    <script src="./assets/js/app.js" defer></script>
   </head>
   <body>
-    <h1>calculator</h1>
+    <main class="calculator">
+      <div class="display-container">
+        <span class="previous-value-text">155 +</span>
+        <span class="current-value-text">789</span>
+      </div>
+      <div class="buttons-container">
+        <button class="btn btn-operation" data-clear>CE</button>
+        <button class="btn btn-operation span-2" data-delete>DEL</button>
+        <button class="btn btn-operation" data-operation>/</button>
+        <button class="btn btn-number" data-number>7</button>
+        <button class="btn btn-number" data-number>8</button>
+        <button class="btn btn-number" data-number>9</button>
+        <button class="btn btn-operation" data-operation>*</button>
+        <button class="btn btn-number" data-number>4</button>
+        <button class="btn btn-number" data-number>5</button>
+        <button class="btn btn-number" data-number>6</button>
+        <button class="btn btn-operation" data-operation>-</button>
+        <button class="btn btn-number" data-number>1</button>
+        <button class="btn btn-number" data-number>2</button>
+        <button class="btn btn-number" data-number>3</button>
+        <button class="btn btn-operation" data-operation>+</button>
+        <button class="btn btn-number" data-number>0</button>
+        <button class="btn btn-number" data-number>.</button>
+        <button class="btn btn-equals span-2" data-equals>=</button>
+      </div>
+    </main>
   </body>
 </html>
