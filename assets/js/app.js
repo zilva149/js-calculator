@@ -29,3 +29,32 @@ const btnsNumber = document.querySelectorAll("button[data-number]");
 const btnsOperation = document.querySelectorAll("button[data-operation]");
 
 const calculator = new Calculator(previousValueText, currentValueText);
+
+btnClear.addEventListener("click", () => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
+
+btnDelete.addEventListener("click", () => {
+  calculator.delete();
+  calculator.updateDisplay();
+});
+
+btnEquals.addEventListener("click", () => {
+  calculator.compute();
+  calculator.updateDisplay();
+});
+
+btnsNumber.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    calculator.appendNumber();
+    calculator.updateDisplay();
+  });
+});
+
+btnsOperation.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    calculator.chooseOperation();
+    calculator.updateDisplay();
+  });
+});
