@@ -16,11 +16,16 @@ export class Calculator {
   }
 
   appendNumber(num) {
+    if (num === "." && this.currentValue.includes(".")) {
+      return;
+    }
     this.currentValue = String(this.currentValue) + String(num);
   }
 
   chooseOperation(operation) {
-    console.log(operation);
+    this.operation = operation;
+    this.previousValue = `${this.currentValue} ${this.operation}`;
+    this.currentValue = "";
   }
 
   compute() {
@@ -33,6 +38,6 @@ export class Calculator {
 
   updateDisplay() {
     this.currentValueText.innerHTML = this.currentValue;
-    this.operation = "";
+    this.previousValueText.innerHTML = this.previousValue;
   }
 }
