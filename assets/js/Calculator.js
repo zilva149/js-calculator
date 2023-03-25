@@ -23,13 +23,43 @@ export class Calculator {
   }
 
   chooseOperation(operation) {
+    if (this.operation !== "") {
+      this.operation = operation;
+      this.compute();
+      return;
+    }
+
     this.operation = operation;
     this.previousValue = `${this.currentValue} ${this.operation}`;
     this.currentValue = "";
   }
 
   compute() {
-    console.log("compute");
+    const previous = this.previousValue.slice(0, -2);
+    const current = this.currentValue;
+    const operation = this.previousValue.slice(-1);
+
+    console.log(previous, current, operation);
+
+    let computedValue = "";
+
+    switch (operation) {
+      case "/":
+        computedValue = Number(previous) / Number(current);
+        break;
+      case "x":
+        computedValue = Number(previous) * Number(current);
+        break;
+      case "+":
+        computedValue = Number(previous) + Number(current);
+        break;
+      case "-":
+        computedValue = Number(previous) - Number(current);
+        break;
+    }
+
+    this.currentValue = computedValue;
+    this.previousValue = "";
   }
 
   getDisplayNumber() {
