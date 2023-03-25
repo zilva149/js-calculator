@@ -2,10 +2,13 @@ class Calculator {
   constructor(previousValueText, currentValueText) {
     this.previousValueText = previousValueText;
     this.currentValueText = currentValueText;
+    this.clear();
   }
 
   clear() {
-    console.log("clear");
+    this.previousValue = "";
+    this.currentValue = "";
+    this.operation = "";
   }
 
   delete() {
