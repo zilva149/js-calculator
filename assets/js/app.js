@@ -1,41 +1,4 @@
-class Calculator {
-  constructor(previousValueText, currentValueText) {
-    this.previousValueText = previousValueText;
-    this.currentValueText = currentValueText;
-    this.clear();
-  }
-
-  clear() {
-    this.previousValue = "";
-    this.currentValue = "";
-    this.operation = "";
-  }
-
-  delete() {
-    this.currentValue = String(this.currentValue.slice(0, -1));
-  }
-
-  appendNumber(num) {
-    this.currentValue = String(this.currentValue) + String(num);
-  }
-
-  chooseOperation() {
-    console.log("choose operation");
-  }
-
-  compute() {
-    console.log("compute");
-  }
-
-  getDisplayNumber() {
-    console.log("get display number");
-  }
-
-  updateDisplay() {
-    this.currentValueText.innerHTML = this.currentValue;
-    this.operation = "";
-  }
-}
+import { Calculator } from "./Calculator.js";
 
 const previousValueText = document.querySelector(".previous-value-text");
 const currentValueText = document.querySelector(".current-value-text");
@@ -71,8 +34,8 @@ btnsNumber.forEach((btn) => {
 });
 
 btnsOperation.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    calculator.chooseOperation();
+  btn.addEventListener("click", (e) => {
+    calculator.chooseOperation(e.currentTarget.innerHTML);
     calculator.updateDisplay();
   });
 });
