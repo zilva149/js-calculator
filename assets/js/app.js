@@ -4,19 +4,34 @@ class Calculator {
     this.currentValueText = currentValueText;
   }
 
-  clear() {}
+  clear() {
+    console.log("clear");
+  }
 
-  delete() {}
+  delete() {
+    console.log("delete");
+  }
 
-  appendNumber() {}
+  appendNumber() {
+    console.log("append number");
+  }
 
-  chooseOperation() {}
+  chooseOperation() {
+    console.log("choose operation");
+  }
 
-  compute() {}
+  compute() {
+    console.log("compute");
+  }
 
-  getDisplayNumber() {}
+  getDisplayNumber() {
+    console.log("get display number");
+  }
 
-  updateDisplay() {}
+  updateDisplay() {
+    this.getDisplayNumber();
+    console.log("update display");
+  }
 }
 
 const previousValueText = document.querySelector(".previous-value-text");
