@@ -23,6 +23,11 @@ export class Calculator {
   }
 
   chooseOperation(operation) {
+    if (operation.trim() === "=") {
+      this.operation = operation.trim();
+      return;
+    }
+
     if (this.operation !== "") {
       this.operation = operation;
       this.compute();
@@ -38,8 +43,6 @@ export class Calculator {
     const previous = this.previousValue.slice(0, -2);
     const current = this.currentValue;
     const operation = this.previousValue.slice(-1);
-
-    console.log(previous, current, operation);
 
     let computedValue = "";
 
@@ -58,8 +61,15 @@ export class Calculator {
         break;
     }
 
-    this.currentValue = computedValue;
-    this.previousValue = "";
+    if (this.operation === "=") {
+      this.previousValue = "";
+      this.currentValue = `${computedValue}`;
+      this.operation = "";
+      return;
+    }
+
+    this.previousValue = `${computedValue} ${this.operation}`;
+    this.currentValue = "";
   }
 
   getDisplayNumber() {

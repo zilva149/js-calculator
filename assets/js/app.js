@@ -21,7 +21,8 @@ btnDelete.addEventListener("click", () => {
   calculator.updateDisplay();
 });
 
-btnEquals.addEventListener("click", () => {
+btnEquals.addEventListener("click", (e) => {
+  calculator.chooseOperation(e.currentTarget.innerHTML);
   calculator.compute();
   calculator.updateDisplay();
 });
