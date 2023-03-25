@@ -12,11 +12,11 @@ class Calculator {
   }
 
   delete() {
-    console.log("delete");
+    this.currentValue = String(this.currentValue.slice(0, -1));
   }
 
-  appendNumber() {
-    console.log("append number");
+  appendNumber(num) {
+    this.currentValue = String(this.currentValue) + String(num);
   }
 
   chooseOperation() {
@@ -32,8 +32,8 @@ class Calculator {
   }
 
   updateDisplay() {
-    this.getDisplayNumber();
-    console.log("update display");
+    this.currentValueText.innerHTML = this.currentValue;
+    this.operation = "";
   }
 }
 
@@ -64,8 +64,8 @@ btnEquals.addEventListener("click", () => {
 });
 
 btnsNumber.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    calculator.appendNumber();
+  btn.addEventListener("click", (e) => {
+    calculator.appendNumber(e.currentTarget.innerHTML);
     calculator.updateDisplay();
   });
 });
