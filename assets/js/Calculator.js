@@ -62,17 +62,37 @@ export class Calculator {
     this.operation = null;
   }
 
-  formatNumber() {
-    console.log("format number");
+  formatNumber(num) {
+    if (num === "") return "";
+
+    if (num.includes(".")) {
+      const splitNum = num.split(".");
+      const integerDigits = parseInt(splitNum[0]).toLocaleString("en", {
+        maximumFractionDigits: 0,
+      });
+      const decimalDigits = splitNum[1];
+
+      console.log(integerDigits, decimalDigits);
+      return `${integerDigits}.${decimalDigits}`;
+    }
+
+    num = parseInt(num);
+    return String(
+      num.toLocaleString("en", {
+        maximumFractionDigits: 0,
+      })
+    );
   }
 
   updateDisplay() {
     if (this.operation !== null) {
-      this.previousValueText.innerHTML = `${this.previousValue} ${this.operation}`;
+      this.previousValueText.innerHTML = `${this.formatNumber(
+        this.previousValue
+      )} ${this.operation}`;
     } else {
-      this.previousValueText.innerHTML = this.previousValue;
+      this.previousValueText.innerHTML = this.formatNumber(this.previousValue);
     }
 
-    this.currentValueText.innerHTML = this.currentValue;
+    this.currentValueText.innerHTML = this.formatNumber(this.currentValue);
   }
 }
