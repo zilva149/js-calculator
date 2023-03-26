@@ -8,7 +8,7 @@ export class Calculator {
   clear() {
     this.previousValue = "";
     this.currentValue = "";
-    this.operation = "";
+    this.operation = null;
   }
 
   delete() {
@@ -28,11 +28,13 @@ export class Calculator {
       return;
     }
 
-    if (this.operation !== "") {
+    if (this.operation !== null) {
       this.operation = operation;
       this.compute();
       return;
     }
+
+    if (this.currentValue === "") return;
 
     this.operation = operation;
     this.previousValue = `${this.currentValue} ${this.operation}`;
@@ -64,7 +66,7 @@ export class Calculator {
     if (this.operation === "=") {
       this.previousValue = "";
       this.currentValue = `${computedValue}`;
-      this.operation = "";
+      this.operation = null;
       return;
     }
 
