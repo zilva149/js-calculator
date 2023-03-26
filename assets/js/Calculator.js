@@ -46,8 +46,6 @@ export class Calculator {
     const current = parseFloat(this.currentValue);
     const operation = this.previousValue.slice(-1);
 
-    console.log(previous, operation, current);
-
     if (isNaN(previous) || isNaN(current)) {
       this.operation = null;
       return;
