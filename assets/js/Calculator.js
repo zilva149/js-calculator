@@ -23,7 +23,7 @@ export class Calculator {
   }
 
   chooseOperation(operation) {
-    if (this.currentValue === "") return;
+    if (this.currentValue === "" || this.currentValue === ".") return;
 
     if (this.operation !== null) {
       this.compute();
@@ -63,22 +63,39 @@ export class Calculator {
   }
 
   formatNumber(num) {
-    if (num === "") return "";
+    if (num === ".") return ".";
+
+    const floatNum = parseFloat(num);
+    if (isNaN(floatNum)) return "";
 
     if (num.includes(".")) {
       const splitNum = num.split(".");
-      const integerDigits = parseInt(splitNum[0]).toLocaleString("en", {
-        maximumFractionDigits: 0,
-      });
+      let integerDigits = parseInt(splitNum[0]);
       const decimalDigits = splitNum[1];
 
-      console.log(integerDigits, decimalDigits);
-      return `${integerDigits}.${decimalDigits}`;
+      let integerDigitsDisplay;
+
+      if (isNaN(integerDigits)) {
+        integerDigitsDisplay = "";
+      } else {
+        integerDigitsDisplay = integerDigits.toLocaleString("en", {
+          maximumFractionDigits: 0,
+        });
+      }
+
+      if (
+        this.operation !== null &&
+        decimalDigits === "" &&
+        this.currentValue === ""
+      ) {
+        return String(integerDigitsDisplay);
+      } else {
+        return `${integerDigitsDisplay}.${decimalDigits}`;
+      }
     }
 
-    num = parseInt(num);
     return String(
-      num.toLocaleString("en", {
+      floatNum.toLocaleString("en", {
         maximumFractionDigits: 0,
       })
     );
