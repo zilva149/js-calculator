@@ -23,6 +23,8 @@ export class Calculator {
   }
 
   chooseOperation(operation) {
+    if (this.currentValue === "") return;
+
     if (operation.trim() === "=") {
       this.operation = operation.trim();
       return;
@@ -34,32 +36,37 @@ export class Calculator {
       return;
     }
 
-    if (this.currentValue === "") return;
-
     this.operation = operation;
     this.previousValue = `${this.currentValue} ${this.operation}`;
     this.currentValue = "";
   }
 
   compute() {
-    const previous = this.previousValue.slice(0, -2);
-    const current = this.currentValue;
+    const previous = parseFloat(this.previousValue.slice(0, -2));
+    const current = parseFloat(this.currentValue);
     const operation = this.previousValue.slice(-1);
+
+    console.log(previous, operation, current);
+
+    if (isNaN(previous) || isNaN(current)) {
+      this.operation = null;
+      return;
+    }
 
     let computedValue = "";
 
     switch (operation) {
       case "/":
-        computedValue = Number(previous) / Number(current);
+        computedValue = previous / current;
         break;
       case "x":
-        computedValue = Number(previous) * Number(current);
+        computedValue = previous * current;
         break;
       case "+":
-        computedValue = Number(previous) + Number(current);
+        computedValue = previous + current;
         break;
       case "-":
-        computedValue = Number(previous) - Number(current);
+        computedValue = previous - current;
         break;
     }
 
