@@ -25,35 +25,24 @@ export class Calculator {
   chooseOperation(operation) {
     if (this.currentValue === "") return;
 
-    if (operation.trim() === "=") {
-      this.operation = operation.trim();
-      return;
-    }
-
     if (this.operation !== null) {
-      this.operation = operation;
       this.compute();
-      return;
     }
 
     this.operation = operation;
-    this.previousValue = `${this.currentValue} ${this.operation}`;
+    this.previousValue = this.currentValue;
     this.currentValue = "";
   }
 
   compute() {
-    const previous = parseFloat(this.previousValue.slice(0, -2));
+    const previous = parseFloat(this.previousValue);
     const current = parseFloat(this.currentValue);
-    const operation = this.previousValue.slice(-1);
 
-    if (isNaN(previous) || isNaN(current)) {
-      this.operation = null;
-      return;
-    }
+    if (isNaN(previous) || isNaN(current)) return;
 
     let computedValue = "";
 
-    switch (operation) {
+    switch (this.operation) {
       case "/":
         computedValue = previous / current;
         break;
@@ -68,23 +57,22 @@ export class Calculator {
         break;
     }
 
-    if (this.operation === "=") {
-      this.previousValue = "";
-      this.currentValue = `${computedValue}`;
-      this.operation = null;
-      return;
-    }
-
-    this.previousValue = `${computedValue} ${this.operation}`;
-    this.currentValue = "";
+    this.previousValue = "";
+    this.currentValue = String(computedValue);
+    this.operation = null;
   }
 
-  getDisplayNumber() {
-    console.log("get display number");
+  formatNumber() {
+    console.log("format number");
   }
 
   updateDisplay() {
+    if (this.operation !== null) {
+      this.previousValueText.innerHTML = `${this.previousValue} ${this.operation}`;
+    } else {
+      this.previousValueText.innerHTML = this.previousValue;
+    }
+
     this.currentValueText.innerHTML = this.currentValue;
-    this.previousValueText.innerHTML = this.previousValue;
   }
 }
